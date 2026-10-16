@@ -1,0 +1,33 @@
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Original triangle
+P = np.array([[1, 1, 1],
+              [4, 1, 1],
+              [2, 4, 1]]).T
+
+# Translation values
+tx = 2
+ty = 3
+
+# Translation matrix
+T = np.array([[1, 0, tx],
+              [0, 1, ty],
+              [0, 0, 1]])
+
+# Apply translation
+Q = T @ P
+
+# Plot original and translated triangles
+plt.plot([1, 4, 2, 1], [1, 1, 4, 1], 'b-o', label="Original")
+plt.plot(list(Q[0]) + [Q[0][0]],
+         list(Q[1]) + [Q[1][0]], 'r-o', label="Translated")
+
+plt.title("2D Translation")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.grid(True)
+plt.axis("equal")
+plt.legend()
+plt.show()
